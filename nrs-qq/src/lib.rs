@@ -3,6 +3,7 @@
 #![feature(type_alias_impl_trait)]
 #![feature(map_first_last)]
 #![feature(async_closure)]
+#![no_std]
 pub mod client;
 pub mod ext;
 pub mod provider;

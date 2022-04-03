@@ -31,7 +31,6 @@ where
             }
         }
         tracing::trace!(target: "rs_qq", "pkt: {} passed packet_promises", &pkt.command_name);
-        println!("pkt: {} passed packet_promises", &pkt.command_name);
         {
             if let Some(tx) = self.packet_waiters.write().await.remove(&pkt.command_name) {
                 tx.send(pkt).unwrap();
@@ -39,7 +38,6 @@ where
             }
         }
         tracing::trace!(target: "rs_qq", "pkt: {} passed packet_waiters", &pkt.command_name);
-        println!("pkt: {} passed packet_waiters", &pkt.command_name);
 
         let cli = self.clone();
         P::TP::spawn(async move {
