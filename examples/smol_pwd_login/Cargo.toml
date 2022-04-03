@@ -1,0 +1,19 @@
+[package]
+name = "smol_pwd_login"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nrs-qq = {path="../../nrs-qq"}
+smol = "1.2.5"
+chrono = "0.4.19"
+rand = "0.8"
+no-std-net = "0.6.0"
+anyhow = "1"
+tracing = "0.1"
+futures = "0.3"
+serde_json = "1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+broadcaster = {version="1.0.0",default-features = false}

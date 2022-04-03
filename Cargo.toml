@@ -1,0 +1,11 @@
+[workspace]
+members = [
+    "nrs-qq",
+    "nrq-engine",
+    "examples/*"
+]
+[patch.crates-io]
+prost = { git = "https://gitee.com/ttm0/prost" }
+prost-types = { git = "https://gitee.com/ttm0/prost" }
+jcers = {git = "https://gitee.com/ttm0/jcers"}
+jcers_proc = {git = "https://gitee.com/ttm0/jcers"}
