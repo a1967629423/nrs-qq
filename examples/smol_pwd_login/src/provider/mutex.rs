@@ -27,14 +27,13 @@ impl<'a, T> TMutexGuard<'a, T> for MyMutexGuard<'a, T> {}
 
 impl<T: Send> TMutex<T> for MyMutex<T> {
     type Guard<'a>
-    where
-        Self: 'a,
-    = MyMutexGuard<'a, T>;
+    
+    = MyMutexGuard<'a, T> where Self: 'a;
 
     type Future<'a>
-    where
-        Self: 'a,
-    = impl Future<Output = Self::Guard<'a>> + Send;
+    
+    = impl Future<Output = Self::Guard<'a>> + Send where
+    Self: 'a,;
 
     fn new(value: T) -> Self {
         Self(Mutex::new(value))

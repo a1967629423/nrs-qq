@@ -20,8 +20,8 @@ where
     P: ClientProvider,
 {
     pub fn new(device: Device, version: &'static Version, handler: P::Handler) -> Self {
-        let (out_pkt_sender, _) = P::CP::channel(1024);
-        let (disconnect_signal, _) = P::CP::channel(8);
+        let (out_pkt_sender, _) = P::CP::channel(P::OUT_PKT_CHANNEL_SIZE);
+        let (disconnect_signal, _) = P::CP::channel(P::DISCONNECT_CHANNEL_SIZE);
 
         Self {
             __p_data: PhantomData,

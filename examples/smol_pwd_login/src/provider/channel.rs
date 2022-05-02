@@ -16,10 +16,13 @@ pub struct MyReceiver<T: 'static + Send + Clone>(
     BroadcastChannel<T, UnboundedSender<T>, UnboundedReceiver<T>>,
 );
 
-impl<T: Send + Clone> TReceiver<T> for MyReceiver<T> {
+impl<T:'static + Send + Clone> TReceiver<T> for MyReceiver<T> {
     type Error = ();
 
-    type RecvFuture<'a>  = impl Future<Output = Result<T,Self::Error>> + futures::future::FusedFuture + Send + 'a where Self: 'a;
+    type RecvFuture<'a> = impl futures::Future<Output = Result<T, Self::Error>>
+    + futures::future::FusedFuture
+    + Send
+    + 'a where Self: 'a;
 
     fn recv(&mut self) -> Self::RecvFuture<'_> {
         async move { self.0.next().await.ok_or(()) }.fuse()

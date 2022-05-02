@@ -38,24 +38,20 @@ impl<'a, T> TRwLockWriteGuard<'a, T> for MyRwLockWriteGuard<'a, T> {}
 
 impl<T: Send + Sync> TRwLock<T> for MyRwLock<T> {
     type ReadGuard<'a>
-    where
-        Self: 'a,
-    = MyRwLockReadGuard<'a, T>;
+    
+    = MyRwLockReadGuard<'a, T> where Self: 'a;
 
     type WriteGuard<'a>
-    where
-        Self: 'a,
-    = MyRwLockWriteGuard<'a, T>;
+    
+    = MyRwLockWriteGuard<'a, T> where Self: 'a;
 
     type ReadFuture<'a>
-    where
-        Self: 'a,
-    = impl Future<Output = Self::ReadGuard<'a>> + Send;
+    
+    = impl Future<Output = Self::ReadGuard<'a>> + Send where Self: 'a;
 
     type WriteFuture<'a>
-    where
-        Self: 'a,
-    = impl Future<Output = Self::WriteGuard<'a>> + Send;
+    
+    = impl Future<Output = Self::WriteGuard<'a>> + Send where Self: 'a;
 
     fn new(value: T) -> Self {
         Self(RwLock::new(value))
@@ -78,7 +74,6 @@ impl<T: Send + Sync> TRwLock<T> for MyRwLock<T> {
 
 impl RwLockProvider for MyRwLockProvider {
     type RwLock<T>
-    where
-        T: Send + Sync,
-    = MyRwLock<T>;
+    
+    = MyRwLock<T> where T: Send + Sync;
 }

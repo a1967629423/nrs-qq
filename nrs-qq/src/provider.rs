@@ -345,4 +345,6 @@ pub trait ClientProvider {
         K: Ord + Hash + Send + Sync,
         V: Send + Sync,
     = SingleCache<K, V>;
+    const OUT_PKT_CHANNEL_SIZE:usize = 1024;
+    const DISCONNECT_CHANNEL_SIZE:usize = 8;
 }

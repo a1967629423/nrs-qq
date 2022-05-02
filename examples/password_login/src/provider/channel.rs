@@ -15,12 +15,11 @@ where
     type Error = RecvError;
 
     type RecvFuture<'a>
-    where
-        Self: 'a,
+    
     = impl futures::Future<Output = Result<T, Self::Error>>
         + futures::future::FusedFuture
         + Send
-        + 'a;
+        + 'a where Self: 'a;
 
     fn recv<'t>(&'t mut self) -> Self::RecvFuture<'t> {
         self.0.recv().fuse()
@@ -30,9 +29,8 @@ where
 impl<T: Clone + Send> TSender<T> for MySender<T> {
     type Receiver = MyReceiver<T>;
     type SenderFuture<'a>
-    where
-        Self: 'a,
-    = impl Future<Output = Result<usize, Self::Error>> + Send + 'a;
+    
+    = impl Future<Output = Result<usize, Self::Error>> + Send + 'a where Self: 'a;
     fn send(&self, value: T) -> Self::SenderFuture<'_> {
         futures::future::ready(self.0.send(value).map_err(|_| ()))
     }
