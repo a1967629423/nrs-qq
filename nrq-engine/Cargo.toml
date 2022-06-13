@@ -27,11 +27,11 @@ genio = {version = "0.2.1",default-features = false}
 
 
 # patch due to permission of abnormal utf8
-prost = {git = "https://gitee.com/ttm0/prost",version = "~0.9",default-features = false, features=["prost-derive"]}
-prost-types = {git = "https://gitee.com/ttm0/prost", version = "~0.9",default-features = false}
+prost = {git = "https://github.com/a1967629423/prost.git",version = "~0.9",default-features = false, features=["prost-derive"]}
+prost-types = {git = "https://github.com/a1967629423/prost.git", version = "~0.9",default-features = false}
 
 # TODO: HashMap只有在alloc的情况下才能使用
-jcers = { version = "0.1",git="https://gitee.com/ttm0/jcers",default-features = false, features = ["derive"] }
+jcers = { version = "0.1",git="https://github.com/a1967629423/jcers.git",default-features = false, features = ["derive"] }
 
 [build-dependencies]
 prost-build = { version = "0.9" }

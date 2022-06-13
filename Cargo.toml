@@ -5,7 +5,7 @@ members = [
     "examples/*"
 ]
 [patch.crates-io]
-prost = { git = "https://gitee.com/ttm0/prost" }
-prost-types = { git = "https://gitee.com/ttm0/prost" }
-jcers = {git = "https://gitee.com/ttm0/jcers"}
-jcers_proc = {git = "https://gitee.com/ttm0/jcers"}
+prost = { git = "https://github.com/a1967629423/prost.git" }
+prost-types = { git = "https://github.com/a1967629423/prost.git" }
+jcers = {git = "https://github.com/a1967629423/jcers.git"}
+jcers_proc = {git = "https://github.com/a1967629423/jcers.git"}

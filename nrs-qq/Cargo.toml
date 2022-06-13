@@ -19,7 +19,7 @@ futures-channel = {version="0.3",default-features = false,features = ["alloc","s
 uluru = "3"
 rand = {version = "0.8", default-features = false}
 derivative = {version = "2",features = ["use_core"]} #macro
-jcers = {version = "0.1", git = "https://gitee.com/ttm0/jcers",default-features = false, features = ["derive"] }
+jcers = {version = "0.1", git = "https://github.com/a1967629423/jcers.git",default-features = false, features = ["derive"] }
 no-std-net = "0.6.0"
 genio = {version = "0.2.1",default-features = false}
 tracing = {version = "0.1.31",default-features = false,features = ["attributes"]}
